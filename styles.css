@@ -89,3 +89,53 @@ form button {
 form button:hover {
   background-color: #555;
 }
+
+.footer-container {
+  display: flex;
+  justify-content: space-around;
+  padding: 2rem;
+  background-color: #f8f8f8;
+  border-top: 1px solid #e5e5e5;
+}
+
+.footer-column {
+  flex-basis: 30%;
+  margin: 0 1rem;
+}
+
+.footer-column h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.footer-column p, .footer-column ul {
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.footer-column ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-column ul li a {
+  color: #333;
+  text-decoration: none;
+}
+
+.footer-column ul li a:hover {
+  color: #007bff;
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding: 1rem 0;
+  background-color: #f0f0f0;
+  border-top: 1px solid #e5e5e5;
+  font-size: 0.8rem;
+}

@@ -1,4 +1,59 @@
-const apiKey = "edf88a6e4eec4335a9e38659a6a1b698";
+const mockRecipesData = [
+  {
+    "id": 1,
+    "title": "Spaghetti Bolognese",
+    "image": "spaghetti-bolognese.jpg",
+    "ingredients": [
+      "spaghetti",
+      "ground beef",
+      "onion",
+      "garlic",
+      "carrot",
+      "celery",
+      "tomato sauce",
+      "red wine",
+      "salt",
+      "pepper"
+    ],
+    "type": "main course"
+  },
+  {
+    "id": 2,
+    "title": "Chocolate Chip Cookies",
+    "image": "chocolate-chip-cookies.jpg",
+    "ingredients": [
+      "butter",
+      "sugar",
+      "brown sugar",
+      "vanilla extract",
+      "eggs",
+      "flour",
+      "baking soda",
+      "salt",
+      "chocolate chips"
+    ],
+    "type": "dessert"
+  },
+  {
+    "id": 3,
+    "title": "Caesar Salad",
+    "image": "caesar-salad.jpg",
+    "ingredients": [
+      "romaine lettuce",
+      "croutons",
+      "parmesan cheese",
+      "anchovies",
+      "lemon juice",
+      "olive oil",
+      "garlic",
+      "egg",
+      "dijon mustard",
+      "salt",
+      "pepper"
+    ],
+    "type": "main course"
+  }
+];
 
 document.addEventListener("DOMContentLoaded", function () {
   if (window.location.pathname.endsWith("index.html")) {
@@ -20,63 +75,27 @@ function searchRecipes() {
 
 function displayResults() {
   const searchInput = localStorage.getItem("searchInput");
-  const url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&query=${encodeURIComponent(searchInput)}&number=10`;
-
-  fetch(url)
-    .then(response => response.json())
-    .then(data => {
-      const recipes = data.results;
-      displayRecipes(recipes, "results");
-    })
-    .catch(error => {
-      console.error("Error fetching recipes:", error);
-    });
+  const matchedRecipes = mockRecipesData.filter(recipe => recipe.title.toLowerCase().includes(searchInput.toLowerCase()));
+  displayRecipes(matchedRecipes, "results");
 }
 
 function displayMainCourses() {
-  const url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&type=main course&number=10`;
-
-  fetch(url)
-    .then(response => response.json())
-    .then(data => {
-      const recipes = data.results;
-      displayRecipes(recipes, "main");
-    })
-    .catch(error => {
-      console.error("Error fetching recipes:", error);
-    });
+  const mainCourses = mockRecipesData.filter(recipe => recipe.type === "main course");
+  displayRecipes(mainCourses, "main");
 }
 
 function displayDesserts() {
-  const url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&type=dessert&number=10`;
-
-  fetch(url)
-    .then(response => response.json())
-    .then(data => {
-      const recipes = data.results;
-      displayRecipes(recipes, "desserts");
-    })
-    .catch(error => {
-      console.error("Error fetching recipes:", error);
-    });
+  const desserts = mockRecipesData.filter(recipe => recipe.type === "dessert");
+  displayRecipes(desserts, "desserts");
 }
 
 function displayPopularDishes() {
-  const url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&sort=popularity&number=10`;
-
-  fetch(url)
-    .then(response => response.json())
-    .then(data => {
-      const recipes = data.results;
-      displayRecipes(recipes, "popular-dishes");
-    })
-    .catch(error => {
-      console.error("Error fetching recipes:", error);
-    });
+  displayRecipes(mockRecipesData.slice(0, 2), "popular-dishes");
 }
 
 function displayRecipes(recipes, type) {
   const container = document.querySelector(`.${type}-recipe-grid`);
+  container.innerHTML = "";
 
   recipes.forEach((recipe) => {
     const recipeCard = document.createElement("div");

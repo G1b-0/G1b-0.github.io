@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dishes.dish</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="mainpage.html">Home</a></li>
+        <li><a href="maincourses.html">Main Courses</a></li>
+        <li><a href="desserts.html">Desserts</a></li>
+        <li><a href="aboutus.html">About Us</a></li>
+      </ul>
+    </nav>
+  </header>
+  <section class="cover-image">
+    <img src="https://via.placeholder.com/1200x400" alt="Cover image">
+  </section>
+  <main>
+    <form id="searchForm" onsubmit="event.preventDefault(); searchRecipes();">
+      <input type="text" id="searchInput" placeholder="Search for recipes...">
+      <button type="submit">Search</button>
+    </form>
+  </main>
+  <script src="scripts.js"></script>
+</body>
+</html>

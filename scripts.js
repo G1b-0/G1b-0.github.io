@@ -1,12 +1,14 @@
 const apiKey = "edf88a6e4eec4335a9e38659a6a1b698";
 
 document.addEventListener("DOMContentLoaded", function () {
-  if (window.location.pathname.endsWith("results.html")) {
-    displayResults();
+  if (window.location.pathname.endsWith("index.html")) {
+    displayPopularDishes();
   } else if (window.location.pathname.endsWith("maincourses.html")) {
     displayMainCourses();
   } else if (window.location.pathname.endsWith("desserts.html")) {
     displayDesserts();
+  } else if (window.location.pathname.endsWith("results.html")) {
+    displayResults();
   }
 });
 
@@ -53,6 +55,20 @@ function displayDesserts() {
     .then(data => {
       const recipes = data.results;
       displayRecipes(recipes, "desserts");
+    })
+    .catch(error => {
+      console.error("Error fetching recipes:", error);
+    });
+}
+
+function displayPopularDishes() {
+  const url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&sort=popularity&number=10`;
+
+  fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      const recipes = data.results;
+      displayRecipes(recipes, "popular-dishes");
     })
     .catch(error => {
       console.error("Error fetching recipes:", error);

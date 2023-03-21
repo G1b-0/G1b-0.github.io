@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dishes.dish - Home</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="maincourses.html">Main Courses</a></li>
+        <li><a href="desserts.html">Desserts</a></li>
+        <li><a href="aboutus.html">About Us</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <div class="cover-image">
+      <img src="cover-image.jpg" alt="Delicious dishes">
+    </div>
+    <form onsubmit="event.preventDefault(); searchRecipes();">
+      <input type="text" id="searchInput" placeholder="Search for recipes...">
+      <button type="submit">Search</button>
+    </form>
+    <h2>Most Popular Dishes</h2>
+    <section class="popular-dishes-recipe-grid recipe-grid"></section>
+    <h2>About Dishes.dish</h2>
+    <p>Welcome to Dishes.dish, your one-stop website for discovering amazing recipes based on the ingredients you have at home. Whether you're looking for main courses, desserts, or just some culinary inspiration, we've got you covered. Browse through our collections or use the search bar to find the perfect dish for any occasion.</p>
+  </main>
+  <script src="scripts.js"></script>
+</body>
+</html>

@@ -1,118 +1,49 @@
-const mockRecipesData = [
-  {
-    "id": 1,
-    "title": "Spaghetti Bolognese",
-    "image": "spaghetti-bolognese.jpg",
-    "ingredients": [
-      "spaghetti",
-      "ground beef",
-      "onion",
-      "garlic",
-      "carrot",
-      "celery",
-      "tomato sauce",
-      "red wine",
-      "salt",
-      "pepper"
-    ],
-    "type": "main course"
-  },
-  {
-    "id": 2,
-    "title": "Chocolate Chip Cookies",
-    "image": "chocolate-chip-cookies.jpg",
-    "ingredients": [
-      "butter",
-      "sugar",
-      "brown sugar",
-      "vanilla extract",
-      "eggs",
-      "flour",
-      "baking soda",
-      "salt",
-      "chocolate chips"
-    ],
-    "type": "dessert"
-  },
-  {
-    "id": 3,
-    "title": "Caesar Salad",
-    "image": "caesar-salad.jpg",
-    "ingredients": [
-      "romaine lettuce",
-      "croutons",
-      "parmesan cheese",
-      "anchovies",
-      "lemon juice",
-      "olive oil",
-      "garlic",
-      "egg",
-      "dijon mustard",
-      "salt",
-      "pepper"
-    ],
-    "type": "main course"
-  }
-];
+function displayRecipes(recipes, containerId) {
+  const container = document.getElementById(containerId);
+  container.innerHTML = '';
 
-document.addEventListener("DOMContentLoaded", function () {
-  if (window.location.pathname.endsWith("index.html")) {
-    displayPopularDishes();
-  } else if (window.location.pathname.endsWith("maincourses.html")) {
-    displayMainCourses();
-  } else if (window.location.pathname.endsWith("desserts.html")) {
-    displayDesserts();
-  } else if (window.location.pathname.endsWith("results.html")) {
-    displayResults();
-  }
-});
+  recipes.forEach(recipe => {
+    const recipeElement = document.createElement('div');
+    recipeElement.className = 'recipe';
 
-function searchRecipes() {
-  const searchInput = document.getElementById("searchInput").value;
-  localStorage.setItem("searchInput", searchInput);
-  window.location.href = "results.html";
-}
+    const recipeImage = document.createElement('img');
+    recipeImage.src = recipe.imageUrl;
+    recipeImage.alt = recipe.name;
 
-function displayResults() {
-  const searchInput = localStorage.getItem("searchInput");
-  const matchedRecipes = mockRecipesData.filter(recipe => recipe.title.toLowerCase().includes(searchInput.toLowerCase()));
-  displayRecipes(matchedRecipes, "results");
+    const recipeName = document.createElement('h3');
+    recipeName.textContent = recipe.name;
+
+    const recipeDescription = document.createElement('p');
+    recipeDescription.textContent = recipe.description;
+
+    recipeElement.appendChild(recipeImage);
+    recipeElement.appendChild(recipeName);
+    recipeElement.appendChild(recipeDescription);
+
+    container.appendChild(recipeElement);
+  });
 }
 
 function displayMainCourses() {
-  const mainCourses = mockRecipesData.filter(recipe => recipe.type === "main course");
-  displayRecipes(mainCourses, "main");
+  if (window.location.pathname.includes('maincourses.html')) {
+    displayRecipes(mockRecipesData.mainCourses, 'main-courses-container');
+  }
 }
 
 function displayDesserts() {
-  const desserts = mockRecipesData.filter(recipe => recipe.type === "dessert");
-  displayRecipes(desserts, "desserts");
+  if (window.location.pathname.includes('desserts.html')) {
+    displayRecipes(mockRecipesData.desserts, 'desserts-container');
+  }
 }
 
 function displayPopularDishes() {
-  displayRecipes(mockRecipesData.slice(0, 2), "popular-dishes");
+  if (window.location.pathname.includes('index.html')) {
+    displayRecipes(mockRecipesData.popularDishes, 'popular-dishes-container');
+  }
 }
 
-function displayRecipes(recipes, type) {
-  const container = document.querySelector(`.${type}-recipe-grid`);
-  container.innerHTML = "";
-
-  recipes.forEach((recipe) => {
-    const recipeCard = document.createElement("div");
-    recipeCard.classList.add("recipe-card");
-
-    const recipeImage = document.createElement("img");
-    recipeImage.src = recipe.image;
-    recipeCard.appendChild(recipeImage);
-
-    const recipeContent = document.createElement("div");
-    recipeContent.classList.add("recipe-card-content");
-
-    const recipeTitle = document.createElement("h3");
-    recipeTitle.textContent = recipe.title;
-    recipeContent.appendChild(recipeTitle);
-
-    recipeCard.appendChild(recipeContent);
-    container.appendChild(recipeCard);
-  });
-}
+document.addEventListener('DOMContentLoaded', () => {
+  displayMainCourses();
+  displayDesserts();
+  displayPopularDishes();
+});

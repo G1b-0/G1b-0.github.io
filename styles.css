@@ -4,6 +4,22 @@ body {
   padding: 0;
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.content {
+  flex: 1;
+}
+
+
 header {
   background-color: #333;
   padding: 10px;

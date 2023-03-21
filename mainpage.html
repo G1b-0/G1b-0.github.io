@@ -6,7 +6,9 @@
   <title>Dishes.dish</title>
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
+  <div class="page-wrapper">
   <header>
     <nav>
       <ul>
@@ -20,12 +22,14 @@
   <section class="cover-image">
     <img src="https://via.placeholder.com/1200x400" alt="Cover image">
   </section>
-  <main>
+
+  <main class="content">
     <form id="searchForm" onsubmit="event.preventDefault(); searchRecipes();">
       <input type="text" id="searchInput" placeholder="Search for recipes...">
       <button type="submit">Search</button>
     </form>
   </main>
+
   <footer>
   <div class="footer-container">
     <div class="footer-column">

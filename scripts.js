@@ -37,13 +37,35 @@ function displayDesserts() {
 }
 
 function displayPopularDishes() {
-  if (window.location.pathname.includes('index.html')) {
-    displayRecipes(mockRecipesData.popularDishes, 'popular-dishes-container');
-  }
+if (window.location.pathname.includes('index.html')) {
+displayRecipes(mockRecipesData.popularDishes, 'popular-dishes-container');
+ }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  displayMainCourses();
-  displayDesserts();
-  displayPopularDishes();
+function searchRecipes(query) {
+const filteredRecipes = [];
+const allRecipes = [...mockRecipesData.mainCourses, ...mockRecipesData.desserts];
+
+allRecipes.forEach(recipe => {
+if (recipe.name.toLowerCase().includes(query.toLowerCase()) || recipe.ingredients.some(ingredient => ingredient.toLowerCase().includes(query.toLowerCase()))) {
+filteredRecipes.push(recipe);
+ }
 });
+
+return filteredRecipes;
+}
+
+function handleSearchButtonClick() {
+const searchInput = document.getElementById('search-input');
+const query = searchInput.value.trim();
+if (query) {
+const results = searchRecipes(query);
+displayRecipes(results, 'popular-dishes-container');
+ }
+}
+
+document.getElementById('search-button').addEventListener('click', handleSearchButtonClick);
+
+displayMainCourses();
+displayDesserts();
+displayPopularDishes();

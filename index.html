@@ -1,37 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script src="mockData.js"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dishes.Dish</title>
   <link rel="stylesheet" href="styles.css">
+  <title>Dishes.Dish</title>
+  <script src="mockData.js"></script>
+  <script src="scripts.js" defer></script>
 </head>
 <body>
-  <div class="page-wrapper">
-    <header>
-      <nav>
-        <ul>
-          <li><a href="mainpage.html">Home</a></li>
-          <li><a href="maincourses.html">Main Courses</a></li>
-          <li><a href="desserts.html">Desserts</a></li>
-          <li><a href="aboutus.html">About Us</a></li>
-        </ul>
-      </nav>
-    </header>
-    <main class="content">
-      <form id="searchForm" onsubmit="event.preventDefault(); searchRecipes();">
-        <input type="text" id="searchInput" placeholder="Search for recipes...">
-        <button type="submit">Search</button>
-      </form>
-      <section>
-        <h2>Most Popular Dishes</h2>
-        <div class="popular-dishes-recipe-grid">
-          <!-- Most popular dishes will be displayed here -->
-        </div>
-      </section>
-    </main>
-  </div>
+  <header>
+    <h1>Dishes.Dish</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="maincourses.html">Main Courses</a>
+      <a href="desserts.html">Desserts</a>
+      <a href="aboutus.html">About Us</a>
+    </nav>
+  </header>
+  <main>
+    <div id="search-container">
+      <input type="text" id="search-input" placeholder="Search for a recipe...">
+      <button id="search-button">Search</button>
+    </div>
+    <div id="popular-dishes-container"></div>
+  </main>
   <footer>
     <div class="footer-container">
       <div class="footer-column">
@@ -56,8 +49,7 @@
     <div class="footer-bottom">
       <p>&copy; 2023 Dishes.Dish. All rights reserved.</p>
     </div>
+
   </footer>
-  <script src="mockData.js"></script>
-  <script src="scripts.js"></script>
 </body>
 </html>

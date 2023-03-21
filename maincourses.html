@@ -3,51 +3,64 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Main Courses - Dishes.dish</title>
+  <title>Main Courses - Dishes.Dish</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    <nav>
-      <ul>
-        <li><a href="mainpage.html">Home</a></li>
-        <li><a href="maincourses.html">Main Courses</a></li>
-        <li><a href="desserts.html">Desserts</a></li>
-        <li><a href="aboutus.html">About Us</a></li>
-      </ul>
-    </nav>
-  </header>
-  <main>
-    <h1>Main Courses</h1>
-    <section class="main-recipe-grid recipe-grid"></section>
-  </main>
-
+  <div class="page-wrapper">
+    <header>
+      <nav>
+        <ul>
+          <li><a href="mainpage.html">Home</a></li>
+          <li><a href="maincourses.html">Main Courses</a></li>
+          <li><a href="desserts.html">Desserts</a></li>
+          <li><a href="aboutus.html">About Us</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="content">
+      <h1>Main Courses</h1>
+      <section class="main-recipe-grid recipe-grid"></section>
+      <section>
+        <h2>Main Courses</h2>
+        <div class="main-recipe-grid">
+          <!-- Main courses will be displayed here -->
+        </div>
+      </section>
+      <section>
+        <h2>Main Courses</h2>
+        <div class="main-recipe-grid">
+          <!-- Main courses will be displayed here -->
+        </div>
+      </section>
+    </main>
+  </div>
   <footer>
-  <div class="footer-container">
-    <div class="footer-column">
-      <h3>About Dishes.Dish</h3>
-      <p>Dishes.Dish is a food recipe website that helps you find delicious recipes based on the ingredients you have on hand. Discover new main courses, desserts, and more.</p>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>About Dishes.Dish</h3>
+        <p>Dishes.Dish is a food recipe website that helps you find delicious recipes based on the ingredients you have on hand. Discover new main courses, desserts, and more.</p>
+      </div>
+      <div class="footer-column">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="maincourses.html">Main Courses</a></li>
+          <li><a href="desserts.html">Desserts</a></li>
+          <li><a href="aboutus.html">About Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Contact Us</h3>
+        <p>1234 Street Name, City, State, 12345</p>
+        <p>Email: info@dishes.dish</p>
+        <p>Phone: (123) 456-7890</p>
+      </div>
     </div>
-    <div class="footer-column">
-      <h3>Quick Links</h3>
-      <ul>
-        <li><a href="maincourses.html">Main Courses</a></li>
-        <li><a href="desserts.html">Desserts</a></li>
-        <li><a href="aboutus.html">About Us</a></li>
-      </ul>
+    <div class="footer-bottom">
+      <p>&copy; 2023 Dishes.Dish. All rights reserved.</p>
     </div>
-    <div class="footer-column">
-      <h3>Contact Us</h3>
-      <p>1234 Street Name, City, State, 12345</p>
-      <p>Email: info@dishes.dish</p>
-      <p>Phone: (123) 456-7890</p>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>&copy; 2023 Dishes.Dish. All rights reserved.</p>
-  </div>
-</footer>
-
+  </footer>
+  <script src="mockData.js"></script>
   <script src="scripts.js"></script>
 </body>
 </html>
